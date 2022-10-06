@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Bootstrap -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link href="./css/style.css" rel="stylesheet" media="screen">
+    <link rel="cadeado azul" href="./image/cadeado.jpeg" type="image/x-icon">
+    <title>Codifique</title>
+</head>
+<body>
+    <header>CODIFICAÇÃO COM   
+           
+         <!-- EXPLICAÇÃO SOBRE CIFRA DE CÉSAR -->
+         <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cifradecesar">
+    CIFRA DE CÉSAR</button>
+
+  <div class="modal fade" id="cifradecesar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cifra de César</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">História
+            <p>Esta cifra foi nomeada através de Júlio César, o general Romano que foi o principal responsável por transformar Roma em um império aproximadamente em 50 a.C. </p><p>Essa cifra, classificada como uma Cifra de Substituição, consistia em substituir cada letra da mensagem pela letra três posições depois dela. Essa cifra era usada no Império Romano para fins de proteção de informações relevantes do ponto de vista militar. Não se sabe a eficácia deste método naquela época, mas sabemos que muitos inimigos de Roma que interceptavam a mensagem consideravam-na escrita em outra língua que eles não tinham conhecimento. Com isso, podemos assumir que, para a época, este método era bastante eficaz.</p>
+            Como utilizar:<br>
+            <p>Para usar, selecione o campo "Cifra de César", defina quantas posições no alfabeto deseja movimentar, escolha se deseja codificar ou descodificar uma mensagem, digite-a e conclua apertando o botão! </p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">voltar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Fim-->
+  E 
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#base64">
+    BASE64
+  </button>
+  
+  <!-- EXPLICAÇÃO SOBRE BASE64 -->
+  <div class="modal fade" id="base64" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Base64</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body"> Explicação
+            <p>Ferramenta para decodificar (decode) e codificar (encode) textos utilizando o método de codificação Base64 (usado em transferências via internet, anexos email, etc). Base64 é um método para codificação de dados para transferência na Internet (codificação MIME para transferência de conteúdo). </p><p>É utilizado frequentemente para transmitir dados binários por meios de transmissão que lidam apenas com texto, como por exemplo, para enviar arquivos anexos por e-mail. Seu alfabeto é constituído por 64 caracteres ([A-Z],[a-z],[0-9], “/” e “+”), o que deu  origem ao seu nome. Além desses caracteres, o Base64 utiliza o carácter “=” como um sufixo especial dentro da codificação. </p>
+            Como utilizar:<br>
+            <p>Para usar, selecione o campo "Base64" e escolha se deseja codificar ou descodificar uma mensagem, digite-a e conclua apertando o botão!  </p>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">voltar</button>
+        </div>
+      </div>
+    </div>
+  </div>.
+  <!--Fim-->
+    </header>
+    <main>
+        <div>
+            <fieldset class="grupo"><div class="campo">
+                <form>
+                    <div><h3>Escolha o método:</h3></div>
+                    <div>
+                                    <!--caixa para seleção de método-->
+                        <select name=""style="" id="selecao" onchange="codificacao()">
+                        <option value="" disabled selected>Selecione</option>
+                        <option id ="cesar" value="cesar">Cifra de César</option>
+                        <option id = "base" value="64">Base64</option>
+                        <input type="number" id="chave" style="width:160px"min="0" max="25" value="" onkeyup="validandoChave()" placeholder="defina a chave"/>
+                        </select>           
+                        <div>
+                            <!--fim-->
+
+                            <!--Radio buttons pra codificar ou decodificar-->
+                        
+                            <form>
+                            <h4>Escolha:</h4>
+                             
+                            
+                           <input type="radio" id="codificar" name="escolha" value="codificar"checked="checked">Codificar
+            
+                            
+                            <input type="radio" id="descodificar" name="escolha" value="codificar"> Descodificar
+
+                           <!-- <button type="button" id="codificar" onclick="criptografar()">Codificar</button> -->
+                        
+                        </div>
+                        </form> <!---->
+                    
+                        <!--Área pra inserir texto-->
+            
+                        <form id="mensagens">
+                        <input class="mensagemRecebida64" type="text" placeholder="⌨" required onkeyup="base64()"/>
+                        <input class="mensagemRecebidaCesar"type="text" placeholder="⌨" required onkeyup="validandoChave()"/>
+                        <br>Leia a sua mensagem:
+                    <textarea name="textoConvertido" id="resultado64" placeholder="Mensagem convertida"></textarea>
+                    <textarea name="textoConvertido" id="resultadoCesar" placeholder="Mensagem convertida"></textarea>
+                        </form>
+                    </div>
+                
+
+
+
+
+                    
+                    </form>
+                    </form>
+
+
+                    <!---->
+                </form>
+            </fildset>
+        </div>
+    </main>
+    
+    <footer>Raquel Sacramento_______________________________________________________________"Myxpsk xy zbymoccy!"</footer>
+   
+    
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="/script/main.js"></script>
+</body>
+</html>
