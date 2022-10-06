@@ -40,7 +40,25 @@ function base64() {
         resultado.innerHTML += String.fromCharCode(modificacao);
       }
     }
-  
+
+    function yesnoCheck(that) {
+      if (that.value == "base64") {
+          document.querySelector(".chave").style.display = "none";
+      } else{
+          document.querySelector(".chave").style.display = "inline-block"
+      }
+  }
+    function criptografar(){
+      if (codificar.checked && select.value == "base64"){
+          transformaBase64()
+      } else if(descodificar.checked && select.value =="base64"){
+          descodifica64()
+      } else if(codificar.checked && select.value =="cifraDeCesar"){
+          criptoCesar()
+      } else if(descodificar.checked && select.value=="cifraDeCesar"){
+          descriptoCesar()
+      }
+  }
     
     function codificacao() {
       let escolha = document.querySelector("#selecao");
@@ -59,10 +77,12 @@ function base64() {
         document.querySelector("#resultado64").style.display = "block";
       } 
       else {
+        
         document.querySelector(".mensagemRecebida64").style.display = "block";
         document.querySelector(".mensagemRecebidaCesar").style.display = "none";
         document.querySelector("#resultadoCesar").style.display = "none";
         document.querySelector("#resultado64").style.display = "block";
+        
       }
     }
     
